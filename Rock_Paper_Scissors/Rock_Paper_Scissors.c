@@ -9,8 +9,8 @@ int game(char, char);
 
 int main() {
 
-    printf("\n\t\t\t\t\t\t\t\tWelcome to Rock Paper Scissors Game!\n");
-    printf("Press 1 and Enter to start or Q to quit the game!\n");
+    printf("\n\n\t\t\t\t\t\t\t\tWelcome to Rock Paper Scissors Game!");
+    printf("\n\n\t\t\t\t\t\t\tPress 1 and Enter to start or Q to quit the game!\n");
      
     srand(time(NULL));
     char play;
@@ -30,14 +30,13 @@ int main() {
 
 void menuOutput() {
 
-    printf("Rock Paper Scissors Game\n");
-    printf("Description: Choose one of \
-    the three choices - and see if you can beat the computer. \
-    Will you win? The chance is random!\n");
-    printf("Game Mode (Press number)\n");
-    printf("1 : 1 Player VS. Computer\n");
+    printf("\n\t\t\t\t\t\t\t\tRock Paper Scissors Game\n");
+    printf("\t\t\t\t\tDescription: Choose one of the three choices - and see if you can beat the computer.\n\
+    \t\t\t\t\t\t\t\t\t\tWill you win? The chance is random!\n");
+    printf("\t\t\t\t\t\t\t\tGame Mode (Press number)\n");
+    printf("\t\t\t\t\t\t\t\t1 : Player VS. Computer\n");
     //printf("2 : 2 Players\n");
-    printf("Press any key to Start the game. (Q to exit the game)\n");
+    printf("\t\t\t\t\t\t\tPress any key to Start the game. (Q to exit the game)\n\t\t\t\t\t\t\t\t\t\t");
 }
 
 char getChoice(int n) {
@@ -58,30 +57,32 @@ void playGame() {
     int n;
 
     char play, player, computer, winner;
-    do {
+    while(1) {
         n = rand() % 3;
         computer = getChoice(n);
 
-        printf("Choose your hand! Rock (R), Paper (P), Scissors (S) : ");
+        printf("\n\t\t\t\t\t\t\tChoose your hand! Rock (R), Paper (P), Scissors (S) or (Q) to exit\n\t\t\t\t\t\t\t\t\t\t");
         scanf(" %c", &player);
+
+        if(player == 'Q') {
+            break;
+        }
 
         int result = game(player, computer);
         if(result == 0) {
-            printf("Try more! You lose the game.\n");
+            printf("\t\t\t\t\t\t\t\t\tTry more! You lose the game.\n");
         } else if(result == 1) {
-            printf("Amazing! You win the game.\n");
+            printf("\t\t\t\t\t\t\t\t\tAmazing! You win the game.\n");
         } else {
-            printf("Game DRAW!\n");
+            printf("\t\t\t\t\t\t\t\t\t\tGame DRAW!\n");
         }
     
-        printf("Continue to play? (press \"Q\" to stop the game)");
-        scanf(" %c", &play);
-    } while(play != 'Q');
+    }
 }
 int game(char player, char computer) {
 
-    printf("Player VS. Computer has began!\n");
-    printf("%c VS %c\n", player, computer);
+    printf("\t\t\t\t\t\t\t\t\tPlayer VS. Computer has began!\n");
+    printf("\t\t\t\t\t\t\t\t\t\t%c VS %c\n", player, computer);
 
     // initital winner is computer.
     // 0 is computer, 1 is player and 2 is no winner.
