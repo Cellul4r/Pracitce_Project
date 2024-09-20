@@ -36,12 +36,22 @@ int main() {
         scanf(" %c", &play);
     }
 
-    system("pause");
+    //system("pause");
     return 0;
 }
 
-char getChoice(int n) {
+void menuOutput() {
 
+    printf("Rock Paper Scissors Game\n");
+    printf("Description: Choose one of \
+    the three choices - and see if you can beat the computer. \
+    Will you win? The chance is random!\n");
+    printf("Game Mode (Press number)\n");
+    printf("1 : 1 Player VS. Computer\n");
+    printf("2 : 2 Players");
+}
+
+char getChoice(int n) {
     char choice;
     if(n == 0) {
         choice = 'R';
