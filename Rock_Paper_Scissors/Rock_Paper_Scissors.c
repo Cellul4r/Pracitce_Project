@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 
+void menuOutput(void);
 char getChoice(int);
+void playGame(void);
 int game(char, char);
 
 int main() {
@@ -11,29 +13,15 @@ int main() {
     printf("Press 1 and Enter to start or Q to quit the game!\n");
      
     srand(time(NULL));
-    int n;
-
-    char play, player, computer, winner;
-
-    scanf(" %c", &play);   
-    while(play != 'Q') {
-
-        n = rand() % 3;
-        computer = getChoice(n);
-
-        printf("Choose your hand! Rock (R), Paper (P), Scissors (S) : ");
-        scanf(" %c", &player);
-
-        int result = game(player, computer);
-        if(result == 0) {
-            printf("Try more! You lose the game.\n");
-        } else if(result == 1) {
-            printf("Amazing! You win the game.\n");
-        } else {
-            printf("Game DRAW!\n");
-        }
-    
+    char play;
+    while(1) {
+        menuOutput();
         scanf(" %c", &play);
+        if(play == 'Q') {
+            break;
+        } else {
+            playGame();
+        }
     }
 
     //system("pause");
@@ -48,7 +36,8 @@ void menuOutput() {
     Will you win? The chance is random!\n");
     printf("Game Mode (Press number)\n");
     printf("1 : 1 Player VS. Computer\n");
-    printf("2 : 2 Players");
+    //printf("2 : 2 Players\n");
+    printf("Press any key to Start the game. (Q to exit the game)\n");
 }
 
 char getChoice(int n) {
@@ -64,6 +53,31 @@ char getChoice(int n) {
     return choice;
 }
 
+void playGame() {
+
+    int n;
+
+    char play, player, computer, winner;
+    do {
+        n = rand() % 3;
+        computer = getChoice(n);
+
+        printf("Choose your hand! Rock (R), Paper (P), Scissors (S) : ");
+        scanf(" %c", &player);
+
+        int result = game(player, computer);
+        if(result == 0) {
+            printf("Try more! You lose the game.\n");
+        } else if(result == 1) {
+            printf("Amazing! You win the game.\n");
+        } else {
+            printf("Game DRAW!\n");
+        }
+    
+        printf("Continue to play? (press \"Q\" to stop the game)");
+        scanf(" %c", &play);
+    } while(play != 'Q');
+}
 int game(char player, char computer) {
 
     printf("Player VS. Computer has began!\n");
